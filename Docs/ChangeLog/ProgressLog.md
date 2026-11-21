@@ -1,0 +1,3 @@
+- 2026-11-14 — Updated character rotation to aim at the projected mouse position. Unity compilation passed. Assign the gameplay Camera to Aim Camera in the Inspector before testing.
+- 2026-11-14 — Removed the Aim Camera Inspector field. Mouse rotation now uses the existing scene camera automatically. Unity compilation passed.
+- 2026-11-14 — Moved character translation to Update. Unity compilation passed. Play Mode comparison of mouse rotation while moving is pending.

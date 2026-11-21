@@ -1,0 +1,3 @@
+- 2026-11-14 — Project the cursor ray onto a horizontal plane through the character, then smooth yaw in LateUpdate. Inject the camera through the Inspector and keep the current yaw when the aim point is too close.
+- 2026-11-14 — Replace the Inspector assignment with a cached camera lookup at initialization. Use the tagged main camera or the sole active camera in Gameplay.
+- 2026-11-14 — Update transform-based movement once per frame before mouse rotation in LateUpdate to reduce visible stepping from the fixed timestep.

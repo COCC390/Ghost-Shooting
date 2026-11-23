@@ -21,5 +21,10 @@ namespace Gameplay
         {
             _characterAnimator.SetBool("IsShoot", value);
         }
+
+        public void PlayAimAnim(bool value)
+        {
+            _characterAnimator.SetBool("IsAim", value);
+        }
     }
 }

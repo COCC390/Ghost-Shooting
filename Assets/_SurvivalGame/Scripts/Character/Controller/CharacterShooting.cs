@@ -12,6 +12,9 @@ namespace Gameplay
         {
             _characterInput.onShootPerformed += ShootingHandler;
             _characterInput.onShootCancelled += ShootingHandler;
+
+            _characterInput.onAimPerformed += AimingHandler;
+            _characterInput.onAimCancelled += AimingHandler;
         }    
 
         private void ShootingHandler(InputAction.CallbackContext callbackContext)
@@ -20,6 +23,14 @@ namespace Gameplay
                 _animationMgr.PlayShootAnim(true);
             else if(callbackContext.canceled)
                 _animationMgr.PlayShootAnim(false);
+        }
+
+        private void AimingHandler(InputAction.CallbackContext callbackContext)
+        {
+            if (callbackContext.performed)
+                _animationMgr.PlayAimAnim(true);
+            else
+                _animationMgr.PlayAimAnim(false);
         }
     }
 }

@@ -129,6 +129,15 @@ namespace Gameplay
                     ""processors"": """",
                     ""interactions"": """",
                     ""initialStateCheck"": true
+                },
+                {
+                    ""name"": ""Aim"",
+                    ""type"": ""Button"",
+                    ""id"": ""daecaa81-4cb8-4b0c-9b4d-afd698422f65"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """",
+                    ""initialStateCheck"": false
                 }
             ],
             ""bindings"": [
@@ -219,6 +228,17 @@ namespace Gameplay
                     ""action"": ""Rotate"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e024b209-535a-40e6-b7ce-1d720a90a132"",
+                    ""path"": ""<Mouse>/rightButton"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Aim"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -248,6 +268,7 @@ namespace Gameplay
             m_Gameplay_Shift_Run = m_Gameplay.FindAction("Shift_Run", throwIfNotFound: true);
             m_Gameplay_Shoot = m_Gameplay.FindAction("Shoot", throwIfNotFound: true);
             m_Gameplay_Rotate = m_Gameplay.FindAction("Rotate", throwIfNotFound: true);
+            m_Gameplay_Aim = m_Gameplay.FindAction("Aim", throwIfNotFound: true);
         }
 
         ~@GameInputAction()
@@ -332,6 +353,7 @@ namespace Gameplay
         private readonly InputAction m_Gameplay_Shift_Run;
         private readonly InputAction m_Gameplay_Shoot;
         private readonly InputAction m_Gameplay_Rotate;
+        private readonly InputAction m_Gameplay_Aim;
         /// <summary>
         /// Provides access to input actions defined in input action map "Gameplay".
         /// </summary>
@@ -359,6 +381,10 @@ namespace Gameplay
             /// Provides access to the underlying input action "Gameplay/Rotate".
             /// </summary>
             public InputAction @Rotate => m_Wrapper.m_Gameplay_Rotate;
+            /// <summary>
+            /// Provides access to the underlying input action "Gameplay/Aim".
+            /// </summary>
+            public InputAction @Aim => m_Wrapper.m_Gameplay_Aim;
             /// <summary>
             /// Provides access to the underlying input action map instance.
             /// </summary>
@@ -397,6 +423,9 @@ namespace Gameplay
                 @Rotate.started += instance.OnRotate;
                 @Rotate.performed += instance.OnRotate;
                 @Rotate.canceled += instance.OnRotate;
+                @Aim.started += instance.OnAim;
+                @Aim.performed += instance.OnAim;
+                @Aim.canceled += instance.OnAim;
             }
 
             /// <summary>
@@ -420,6 +449,9 @@ namespace Gameplay
                 @Rotate.started -= instance.OnRotate;
                 @Rotate.performed -= instance.OnRotate;
                 @Rotate.canceled -= instance.OnRotate;
+                @Aim.started -= instance.OnAim;
+                @Aim.performed -= instance.OnAim;
+                @Aim.canceled -= instance.OnAim;
             }
 
             /// <summary>
@@ -501,6 +533,13 @@ namespace Gameplay
             /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
             /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
             void OnRotate(InputAction.CallbackContext context);
+            /// <summary>
+            /// Method invoked when associated input action "Aim" is either <see cref="UnityEngine.InputSystem.InputAction.started" />, <see cref="UnityEngine.InputSystem.InputAction.performed" /> or <see cref="UnityEngine.InputSystem.InputAction.canceled" />.
+            /// </summary>
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.started" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.performed" />
+            /// <seealso cref="UnityEngine.InputSystem.InputAction.canceled" />
+            void OnAim(InputAction.CallbackContext context);
         }
     }
 }

@@ -21,6 +21,9 @@ namespace Gameplay
         public event Action<InputAction.CallbackContext> onShootPerformed;
         public event Action<InputAction.CallbackContext> onShootCancelled;
 
+        public event Action<InputAction.CallbackContext> onAimPerformed;
+        public event Action<InputAction.CallbackContext> onAimCancelled;
+
         public override void EnableInput()
         {
             gameInputAction.Gameplay.Move.started += MoveStarted;
@@ -36,6 +39,9 @@ namespace Gameplay
 
             gameInputAction.Gameplay.Shoot.performed += ShootPerformed;
             gameInputAction.Gameplay.Shoot.canceled += ShootCancelled;
+
+            gameInputAction.Gameplay.Aim.performed += AimPerformed;
+            gameInputAction.Gameplay.Aim.canceled += AimCancelled;
         }
 
         public override void DisableInput()
@@ -53,6 +59,9 @@ namespace Gameplay
 
             gameInputAction.Gameplay.Shoot.performed -= ShootPerformed;
             gameInputAction.Gameplay.Shoot.canceled -= ShootCancelled;
+
+            gameInputAction.Gameplay.Aim.performed -= AimPerformed;
+            gameInputAction.Gameplay.Aim.canceled -= AimCancelled;
         }
 
         #region Move
@@ -110,6 +119,18 @@ namespace Gameplay
         private void ShootCancelled(InputAction.CallbackContext callbackContext)
         {
             onShootCancelled?.Invoke(callbackContext);
+        }
+        #endregion
+
+        #region Aim
+        private void AimPerformed(InputAction.CallbackContext callbackContext)
+        {
+            onAimPerformed?.Invoke(callbackContext);
+        }
+
+        private void AimCancelled(InputAction.CallbackContext callbackContext)
+        {
+            onAimCancelled?.Invoke(callbackContext);
         }
         #endregion
     }

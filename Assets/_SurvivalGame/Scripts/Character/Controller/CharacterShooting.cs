@@ -8,6 +8,8 @@ namespace Gameplay
         [SerializeField] private CharacterInput _characterInput;
         [SerializeField] private CharacterAnimationManager _animationMgr;
 
+        [SerializeField] private WeaponController _weaponController;
+
         public void InitializeShooting()
         {
             _characterInput.onShootPerformed += ShootingHandler;

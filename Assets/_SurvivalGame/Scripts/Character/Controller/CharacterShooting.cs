@@ -9,6 +9,7 @@ namespace Gameplay
         [SerializeField] private CharacterAnimationManager _animationMgr;
 
         [SerializeField] private WeaponController _weaponController;
+        [SerializeField] private Transform _aimPoint;
 
         public void InitializeShooting()
         {
@@ -22,7 +23,10 @@ namespace Gameplay
         private void ShootingHandler(InputAction.CallbackContext callbackContext)
         {
             if (callbackContext.performed)
+            {
                 _animationMgr.PlayShootAnim(true);
+                _weaponController.Shoot(_aimPoint.position);
+            }
             else if(callbackContext.canceled)
                 _animationMgr.PlayShootAnim(false);
         }

@@ -12,14 +12,17 @@ namespace Gameplay
 
         private void Start()
         {
-            _input.onRotateStarted += MouseValueReceive;
-            _input.onRotatePerformed += MouseValueReceive;
-            _input.onRotateCancelled += MouseValueReceive;
+            MouseValueReceive();   
         }
 
-        private void MouseValueReceive(InputAction.CallbackContext callbackContext)
+        private void LateUpdate()
         {
-            _mouseScreenPosition = callbackContext.ReadValue<Vector2>();
+            MouseValueReceive();
+        }
+
+        private void MouseValueReceive()
+        {
+            _mouseScreenPosition = Mouse.current.position.value;
             var ray = Camera.main.ScreenPointToRay(_mouseScreenPosition);
             var aimPlane = new Plane(Vector3.up, _aimObj.position);
 

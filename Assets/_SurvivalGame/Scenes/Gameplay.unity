@@ -775,6 +775,7 @@ MonoBehaviour:
     _parent: {fileID: 302066271}
     _defaultCapacity: 10
     _maxSize: 100
+  _bulletSpeed: 25
 --- !u!1 &641045384
 GameObject:
   m_ObjectHideFlags: 0
@@ -2766,7 +2767,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: Gameplay::Gameplay.CharacterShooting
   _characterInput: {fileID: 11400000, guid: 68b96a0408a7abe4fababcfe78424222, type: 2}
   _animationMgr: {fileID: 801572631872752176}
-  _weaponController: {fileID: 0}
+  _weaponController: {fileID: 599903985}
+  _aimPoint: {fileID: 1765086825}
 --- !u!114 &801572631872752179
 MonoBehaviour:
   m_ObjectHideFlags: 0
